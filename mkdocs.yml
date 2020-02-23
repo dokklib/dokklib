@@ -1,0 +1,52 @@
+site_name: Dokklib
+site_description: Your guide to the serverless stack
+site_author: Agost Biro
+site_url: https://dokklib.com
+
+copyright: 'Copyright &copy; 2020 Agost Biro'
+
+repo_name: dokklib/dokklib
+repo_url: https://github.com/dokklib/dokklib
+
+theme:
+  name: material
+  feature:
+    tabs: true
+
+plugins:
+  - search
+  - git-revision-date-localized
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - codehilite
+    - admonition
+
+nav:
+  - Overview: index.md
+  - The Serverless Stack: serverles-stack.md
+  - Serverless Is Not Easy: not-easy.md
+  - Adopting Serverless: adopting-serverless.md
+  - Why Python: why-python.md
+  - Services:
+      - Overview: services/index.md
+      - AWS DynamoDB: services/dynamodb.md
+  - Libraries:
+      - Overview: libs/index.md
+      - Dokklib-DB:
+        - Getting Started: libs/db/index.md
+        - Table Setup: libs/db/table-setup.md
+        - Mutations: libs/db/mutations.md
+        - Relational Queries:
+            - One-To-Many: libs/db/one-to-many.md
+            - Many-To-Many: libs/db/many-to-many.md
+            - Transitive Relations: libs/db/transitive-relations.md
+        - Transactions: libs/db/transactions.md
+  - Provider Reviews:
+    - Overview: providers/index.md
+    - AWS: providers/aws.md
+    - Azure: providers/azure.md
+    - Cloudflare: providers/cloudflare.md
+    - GCP: providers/gcp.md
+    - Serverless Framework: providers/serverless-framework.md

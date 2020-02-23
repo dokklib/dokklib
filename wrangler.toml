@@ -1,0 +1,7 @@
+name = "dokklib"
+type = "webpack"
+route = "dokklib.com/*"
+
+[site]
+bucket = "site"
+entry-point = "workers-site"
