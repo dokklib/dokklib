@@ -35,7 +35,7 @@ Put all data into a single DynamoDB that you need to
 
 Besides relational queries and atomic recovery, the single table pattern makes monitoring simpler, leads to better performance and lower costs due to smoother loads.
 
-The key to the single table pattern is being able to anticipate query patterns, as data is now structured around these query patterns. While adding new queries is zero-overhead for a normalized SQL database, this is not the case where adding new query patterns might require changes to how you store the data. This is not as bad as it sounds in practice, because you have full control over how and when it happens (ie. choose between online and offline migrations and you do this when you develop features not at the middle of the night) and the trade-off is well worth it given all the benefits of DynamoDB over SQL databases.
+The key to the single table pattern is being able to anticipate query patterns, as data is now structured around these query patterns. While adding new queries is zero-overhead for a normalized SQL database, this is not the case where adding new query patterns might require changes to how you store the data. This is not as bad as it sounds in practice, because you have full control over how and when it happens (ie. choose between online and offline migrations and you do this when you develop features not in the middle of the night) and the trade-off is well worth it given all the benefits of DynamoDB over SQL databases.
 
 Optimize later. It's ok to make multiple sequential queries especially early on when you're unsure how things will develop.
 

@@ -29,9 +29,10 @@ nav:
   - Serverless Is Not Easy: not-easy.md
   - Adopting Serverless: adopting-serverless.md
   - Why Python: why-python.md
-  - Services:
-      - Overview: services/index.md
-      - AWS DynamoDB: services/dynamodb.md
+  - Guides:
+      - Overview: guides/index.md
+      - AWS Services:
+        - DynamoDB: guides/aws/dynamodb.md
   - Libraries:
       - Overview: libs/index.md
       - Dokklib-DB:
