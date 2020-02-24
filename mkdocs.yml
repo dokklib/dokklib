@@ -10,6 +10,7 @@ repo_url: https://github.com/dokklib/dokklib
 
 theme:
   name: material
+  custom_dir: 'theme'
   feature:
     tabs: true
 
@@ -29,25 +30,38 @@ nav:
   - Serverless Is Not Easy: not-easy.md
   - Adopting Serverless: adopting-serverless.md
   - Why Python: why-python.md
+  - Provider Reviews:
+      - Overview: providers/index.md
+      - AWS: providers/aws.md
+      - Azure: providers/azure.md
+      - Cloudflare: providers/cloudflare.md
+      - GCP: providers/gcp.md
+      - Serverless Framework: providers/serverless-framework.md
   - Guides:
       - Overview: guides/index.md
       - AWS Services:
+        - Overview: guides/aws/index.md
         - DynamoDB: guides/aws/dynamodb.md
   - Libraries:
       - Overview: libs/index.md
       - Dokklib-DB:
         - Getting Started: libs/db/index.md
         - Table Setup: libs/db/table-setup.md
-        - Mutations: libs/db/mutations.md
+        - Get: libs/db/get.md
+        - Write: libs/db/write.md
+        - Delete: libs/db/delete.md
         - Relational Queries:
+            - Structuring Data: libs/db/structuring-data.md
             - One-To-Many: libs/db/one-to-many.md
             - Many-To-Many: libs/db/many-to-many.md
             - Transitive Relations: libs/db/transitive-relations.md
         - Transactions: libs/db/transactions.md
-  - Provider Reviews:
-    - Overview: providers/index.md
-    - AWS: providers/aws.md
-    - Azure: providers/azure.md
-    - Cloudflare: providers/cloudflare.md
-    - GCP: providers/gcp.md
-    - Serverless Framework: providers/serverless-framework.md
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/dokklib'
+    - type: 'twitter'
+      link: 'https://twitter.com/agostbiro'
+    - type: 'envelope'
+      link: 'https://dokklib.substack.com/subscribe'

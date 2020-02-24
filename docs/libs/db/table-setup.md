@@ -80,7 +80,7 @@ Resources:
             ProjectionType: "KEYS_ONLY"
 ```
 
-Dokklib-DB provides a secondary index implementation for convenience that corresponds to `GSI_1` in the snippet from above as `dokklib_db.InverseGlobalIndex`. You can define your own secondary indices as follows:
+Dokklib-DB provides a secondary index implementation for convenience that corresponds to `GSI_1` in the snippet from above as `dokklib_db.InversePrimaryIndex`. You can define your own secondary indices as follows:
 
 ```python
 import dokklib_db as db
@@ -147,7 +147,7 @@ sk = db.SortKey(User, 'alice')
 print(str(sk))
 # USER#alice
 
-item = db.Table('SingleTable').get_item(pk, sk)
+item = db.Table('SingleTable').get(pk, sk)
 print(item)
 # {'PK': '1', 'SK': 'alice'}
 
