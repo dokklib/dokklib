@@ -13,7 +13,7 @@ table = db.Table('MySingleTable')
 
 ## Primary Keys
 
-Dokklib-DB assumes by default that the DynamoDB table has a composite key schema where the string `HASH` key's name is `PK` and the string `RANGE` key's name is `SK`. Corresponding Cloudformation template snippet:
+Dokklib-DB assumes by default that the DynamoDB table has a composite key schema where the string `HASH` key's name is `PK` and the string `RANGE` key's name is `SK`. Corresponding CloudFormation template snippet:
 
 ```yaml
 Resources:
@@ -103,7 +103,7 @@ class MyGlobalSecondaryIndex(db.GlobalSecondaryIndex):
 
 ## Entity Prefixes
 
-The DynamoDB single table pattern uses index overloading to make relational queries for different entity types. This is why the composite key names are the generic `PK` and `SK`, and to keep things orderly, key values are prefixed with their entity names:
+The DynamoDB single table pattern uses index overloading to make relational queries for different entity types. This is why the composite key names are the generic `PK` and `SK`, and to keep things orderly, key values are prefixed with their entity names. For example, if we had a table with user, address, product and order entities, the items would have the following prefixes:
 
 
 PK             | SK 
@@ -113,7 +113,7 @@ ORDER#1        | PRODUCT#book
 ORDER#1        | PRODUCT#cd
 ORDER#2        | USER#bob
 ORDER#2        | PRODUCT#book
-USER#alice     | DEVICE#phone
+USER#alice     | ADDRESS#unique-home-address
 
 Dokklib-DB supports this pattern by requiring that keys for database queries are specified via the `PartitionKey`, `SortKey` or `PrefixSortKey` classes. These key classes take an entity name class as the first argument and the string key value as the second argument. The following snippet demonstrates how we would get the first item from the table above:
 
@@ -156,11 +156,16 @@ print(item)
 Requiring entity names to be Python classes brings us two things: First, it prevents data corruption from typos, and second, it gives us documentation of our entities. Best practice is to put all your entity name definitions into a single file in your project (eg. `entities.py`).
 
 !!! note
-    `Table` methods that return items from DynamoDB automatically strip entity name prefixes from top level keys.
+    `Table` methods that return items from DynamoDB automatically strip entity name prefixes from string values of top level keys.
+    
+## Time to Live
+
+TODO (abiro)
 
 ## Cloudformation Template
 
-You can use the [Cloudformation template](https://github.com/dokklib/dokklib-db/blob/master/tests/integration/cloudformation.yml) from the Dokklib-DB integration tests to set up your DynamoDB single table.
+You can use the [Cloudformation template](https://github.com/dokklib/dokklib-db/blob/master/tests/integration/cloudformation.yml) from the Dokklib-DB integration tests to set up your DynamoDB single table. 
+If you use this template for anything other than testing, make sure to change the table's `DeletionPolicy` and `UpdateReplacePolicy` attributes from `Delete` to `Retain`.
 
 
 
