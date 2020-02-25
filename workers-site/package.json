@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@cloudflare/kv-asset-handler": "^0.0.9"
+    "@cloudflare/kv-asset-handler": "^0.0.9",
+    "mime-types": "^2.1.26"
   }
 }

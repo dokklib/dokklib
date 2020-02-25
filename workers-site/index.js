@@ -1,4 +1,5 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
+import mime from 'mime-types'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -7,74 +8,70 @@ import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = true
-
-addEventListener('fetch', event => {
-  try {
-    event.respondWith(handleEvent(event))
-  } catch (e) {
-    if (DEBUG) {
-      return event.respondWith(
-        new Response(e.message || e.toString(), {
-          status: 500,
-        }),
-      )
-    }
-    event.respondWith(new Response('Internal Error', { status: 500 }))
-  }
-})
+const DEBUG = false
 
 async function handleEvent(event) {
-  const url = new URL(event.request.url)
+  const isHtml = isHtmlRequest(event.request)
   let options = {}
 
-  /**
-   * You can add custom logic to how we fetch your assets
-   * by configuring the function `mapRequestToAsset`
-   */
-  // options.mapRequestToAsset = handlePrefix(/^\/docs/)
+  if (DEBUG) {
+    // Don't cache anything in debug mode
+    options.cacheControl = {
+      bypassCache: true,
+    }
+  } else if (!isHtml) {
+    // Cache non-html assets for a day in the browser
+    options.cacheControl = {
+      browserTTL: 24 * 60 * 60
+    }
+  }
 
   try {
-    if (DEBUG) {
-      // customize caching
-      options.cacheControl = {
-        bypassCache: true,
-      }
-    }
     return await getAssetFromKV(event, options)
   } catch (e) {
     // if an error is thrown try to serve the asset at 404.html
-    if (!DEBUG) {
+    if (DEBUG) {
+      return handleError(e)
+    } else {
       try {
         let notFoundResponse = await getAssetFromKV(event, {
           mapRequestToAsset: req => new Request(`${new URL(req.url).origin}/404.html`, req),
         })
 
         return new Response(notFoundResponse.body, { ...notFoundResponse, status: 404 })
-      } catch (e) {}
+      } catch (e) {
+        return new Response('Internal Error', { status: 500 })
+      }
     }
-
-    return new Response(e.message || e.toString(), { status: 500 })
   }
 }
 
-/**
- * Here's one example of how to modify a request to
- * remove a specific prefix, in this case `/docs` from
- * the url. This can be useful if you are deploying to a
- * route on a zone, or if you only want your static content
- * to exist at a specific path.
- */
-function handlePrefix(prefix) {
-  return request => {
-    // compute the default (e.g. / -> index.html)
-    let defaultAssetKey = mapRequestToAsset(request)
-    let url = new URL(defaultAssetKey.url)
 
-    // strip the prefix from the path for lookup
-    url.pathname = url.pathname.replace(prefix, '/')
-
-    // inherit all other props from the default request
-    return new Request(url.toString(), defaultAssetKey)
+function handleError(error) {
+  if (DEBUG) {
+    return new Response(error.stack, {
+      status: 500,
+    })
+  } else {
+    return new Response('Internal Error', { status: 500 })
   }
 }
+
+function isHtmlRequest(request) {
+  const url = new URL(request.url)
+  const mimeType = mime.lookup(url.pathname)
+  // If there is no mime type, assume it's html
+  // (eg. example.com/foo will be considered html).
+  return !mimeType || mimeType === 'text/html'
+}
+
+
+addEventListener('fetch', event => {
+  try {
+    const res = handleEvent(event).catch(handleError)
+    event.respondWith(res)
+  } catch (e) {
+    event.respondWith(handleError(e))
+  }
+})
+
