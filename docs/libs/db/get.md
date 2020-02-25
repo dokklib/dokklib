@@ -2,7 +2,7 @@
 
 Getting an item requires knowing its composite primary key (`PK` and `SK`) .
 
-Suppose we want to get the date of an order by a user and we know the order id.
+Suppose we want to retrieve the date of an order by a user and we know the order id.
 Then if we have the following data in the table:
 
 PK             | SK            | CreatedOn 
@@ -50,7 +50,7 @@ print(item)
 item = table.get(pk, sk, consistent=True)
 ```
 
-This is called a strongly consistent read. The downside of strongly consistent reads is that they take longer, cost more and may fail due to a temporary degradation in DynamoDB when an eventually consistent read would succeed.
+This is called a strongly consistent read. The downside of a strongly consistent read is that it takes longer, costs more and may fail due to a temporary degradation in DynamoDB when an eventually consistent read would still succeed.
 
 
 

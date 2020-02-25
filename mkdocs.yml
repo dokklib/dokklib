@@ -51,11 +51,12 @@ nav:
         - Write: libs/db/write.md
         - Delete: libs/db/delete.md
         - Relational Queries:
-            - Structuring Data: libs/db/structuring-data.md
             - One-To-Many: libs/db/one-to-many.md
             - Many-To-Many: libs/db/many-to-many.md
             - Transitive Relations: libs/db/transitive-relations.md
         - Transactions: libs/db/transactions.md
+        - Data Replication: libs/db/replication.md
+        - Further Resources: libs/db/resources.md
 
 extra:
   social:

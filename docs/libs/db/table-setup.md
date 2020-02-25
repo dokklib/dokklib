@@ -2,13 +2,13 @@
 
 ## Table Objects
 
-Dokklib-DB is centered around the `Table` class that exposes DynamoDB operations with a friendly interface designed to make the single table pattern easy. You can create a `Table` object as follows:
+Dokklib-DB is centered around the `Table` class that exposes DynamoDB operations with a friendly interface designed to make the single table pattern simple. You can create a `Table` object as follows:
 
 ```python
 import dokklib_db as db
 
 
-table = db.Table('MySingleTable')
+table = db.Table('MyTableName')
 ```
 
 ## Primary Keys
@@ -52,7 +52,7 @@ class MyPrimaryIndex(db.GlobalIndex):
         return 'MySortKeyName'
 
 
-table = db.Table('MySingleTable', primary_index=MyPrimaryIndex())
+table = db.Table('MyTableName', primary_index=MyPrimaryIndex())
 
 ```
 
@@ -77,6 +77,7 @@ Resources:
               AttributeName: "PK"
               KeyType: "RANGE"
           Projection:
+            # Only replicate primary keys to the GSI, not item attributes
             ProjectionType: "KEYS_ONLY"
 ```
 

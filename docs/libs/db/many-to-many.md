@@ -1,7 +1,7 @@
 # Many-To-Many Queries
 
 In a many-to-many relation both entities may have multiple relations to other entities of the same type.
-A good example is users and groups, where one users may belong to multiple groups, but one group may have multiple users as well.
+A good example is users and groups, where one user may belong to multiple groups, but groups may have multiple users as well.
 
 ![Many-to-many relationship example: user and groups](/img/many-to-many.png)
 
@@ -13,8 +13,8 @@ USER#alice     | GROUP#1
 USER#alice     | GROUP#2    
 USER#bob       | GROUP#2    
 
-Now we can use `Table.query_prefix` with the primary index to get all the groups that a user belongs to. 
-If we use `Table.query_prefix` with the inverse primary index instead (which is a global seconday index), we can query all the members of a group.
+We can use `Table.query_prefix` with the primary index to retrieve all the groups that a user belongs to. 
+If we use `Table.query_prefix` with the inverse primary index instead (which is a global seconday index), we can query all the members of a group as well.
 
 ```python
 import dokklib_db as db

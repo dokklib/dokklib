@@ -1,7 +1,7 @@
 # One-To-Many Queries
 
-In a one-to-many relation one entity may have multiple entities attached to it from a different type, but those entities only ever have one relation to the first entity type.
-For example, the relationship between a user and their orders is a one-to-many relation, as users can have multiple orders, but in most applications, one order belongs to only one user.
+In a one-to-many relation, one entity may have multiple entities attached to it from a different type, but those entities can only have one relation to the first entity type.
+For example, the relation between a user and their orders is a one-to-many relation, as users can have multiple orders, but in most applications, one order belongs to only one user.
 
 ![One-to-many relationship example: user has orders](/img/one-to-many.png)
 

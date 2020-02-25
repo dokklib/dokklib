@@ -1,13 +1,13 @@
 # Write Items
 
 Write operations can either create a new item or change an existing item.
-For transactional writes, check out the [Transaction](./transactions.md) docs.
+For transactional writes, check out the [Transactions](./transactions.md) docs.
 
 ## Put
 
 `Table.put` either creates a new item or replaces an existing item with the supplied attributes.
 
-Suppose we want to add a user to a new group and we don't care if the user is already part of that group.
+Suppose that we want to add a user to a new group and we don't care if the user is already part of that group.
 The following code adds the user to the group:
 
 ```python
@@ -55,7 +55,7 @@ USER#alice     | GROUP#my-group| 2             | 2020-02-15T19:09:38
 
 `Table.insert` tries to create a new item and raises a `ConditionalCheckFailedError` if the item already exists.
 
-Suppose we wanted to add a user to a group as in the [Put](#put) example, but we wanted the operation to fail if the user was already a member of that group. We could then use the following code:
+Suppose that we want to add a user to a group as in the [Put](#put) example, but we want the operation to fail if the user was already a member of that group. We could then use the following code:
 
 ```python
 import dokklib_db as db

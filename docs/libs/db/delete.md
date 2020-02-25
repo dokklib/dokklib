@@ -2,7 +2,7 @@
 
 Deleting an item requires knowing its composite primary key (`PK` and `SK`).
 
-Suppose we want to remove a user from a group that they are a member of.
+Suppose that we want to remove a user from a group.
 If we store the group membership as follows:
 
 PK             | SK            
@@ -40,7 +40,7 @@ sk = db.SortKey(Group, 'my-group')
 table.delete(pk, sk)
 ```
 
-`Table.delete` is idempotent by default, meaning that deleting a non-existent item will succeed without an error.
+`Table.delete` is idempotent by default, which means that deleting a non-existent item will succeed without an error.
 If we want to be notified if the item doesn't exist, we can set `idempotent=False`:
 
 ```python
