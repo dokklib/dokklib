@@ -12,7 +12,7 @@ Serverless is often equated with function-as-a-service (eg. AWS Lambda), but thi
 
 ## Serverless Ops
 
-Outsourcing operations is the most under-appreciated aspect of the serverless stack, as we are used to constantly anticipating failure modes of traditional services.
+Outsourcing operations is the most under-appreciated aspect of the serverless stack, as we are used to constantly anticipating the failure modes of traditional services.
 
 ![Probability of failure after last change for serverless and traditional architecture.](img/p-failure-after-last-change.png)
 
@@ -39,6 +39,6 @@ If you’re building a new web application today, your default choice should be 
 
 ## Reasons Not to Use Serverless
 
-1. You have a lot of experience with a particular web stack and you want to prototype something quickly. Unless you want to learn serverless, just go with your favorite stack and deploy in whichever way you’re most comfortable let that be a VPS or Heroku.
+1. You have a lot of experience with a particular web stack and you want to prototype something quickly. Unless you want to learn serverless, just go with your favorite stack and deploy in whichever way you’re most comfortable, let that be a VPS or Heroku.
 1. You’re building a novel service that doesn’t have a managed equivalent. Don’t try to implement an in-memory database on top of Lambda, but make double sure that what you’re building can not be achieved by customizing and tying together existing managed services.
 

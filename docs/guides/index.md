@@ -1,3 +1,4 @@
 # Guides
 
-TODO (abiro)
+- [AWS Service Guides](/guides/aws/)
+

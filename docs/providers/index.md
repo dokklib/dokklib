@@ -1,12 +1,12 @@
-# Cloud Providers Overview
+# Cloud Provider Reviews
 
 ## You, the CIO
 
-The [main strength](/serverless-stack.md) of serverless is also its main challenged: managed services lead to complete reliance on cloud providers. This saves you operational concerns, but also leaves you irrevocably locked in to your cloud services. Picking the wrong provider can wreck your project before you even start it, so it's important to understand what you can expect from different cloud providers and which of them excel in which areas. 
+The [main strength](/serverles-stack/) of serverless is also its main challenged: managed services lead to complete reliance on cloud providers. This saves you operational concerns, but also leaves you irrevocably locked in to your cloud services. Picking the wrong provider can wreck your project before you even start it, so it's important to understand what you can expect from different cloud providers and which of them excel in which areas. 
 
 ## Reviews
 
-I list my recommendations below without explanation and encourage you to read the reviews for details.
+I list my recommendations below without explanation and encourage you to read the reviews behind the links for details.
 
 ### Backend
 
