@@ -1,3 +1,7 @@
+---
+title: One-To-Many Queries - Dokklib-DB
+description: Documentation on making one-to-many relational queries in DynamoDB with Dokklib-DB.
+---
 # One-To-Many Queries
 
 In a one-to-many relation, one entity may have multiple entities attached to it from a different type, but those entities can only have one relation to the first entity type.

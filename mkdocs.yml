@@ -23,6 +23,7 @@ markdown_extensions:
         permalink: true
     - codehilite
     - admonition
+    - meta
 
 nav:
   - Overview: index.md

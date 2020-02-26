@@ -1,3 +1,7 @@
+---
+title: Write Item - Dokklib-DB
+description: Documentation on putting, inserting or updating items DynamoDB with Dokklib-DB.
+---
 # Write Items
 
 Write operations can either create a new item or change an existing item.

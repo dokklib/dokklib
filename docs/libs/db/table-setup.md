@@ -1,3 +1,7 @@
+---
+title: Table Setup - Dokklib-DB
+description: Documentation on setting up a DynamoDB for Dokklib-DB.
+---
 # Table Setup
 
 ## Table Objects

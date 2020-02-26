@@ -1,3 +1,7 @@
+---
+title: Get Item - Dokklib-DB
+description: Documentation on getting an item from DynamoDB with Dokklib-DB.
+---
 # Get an Item
 
 Getting an item requires knowing its composite primary key (`PK` and `SK`) .

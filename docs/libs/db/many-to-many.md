@@ -1,3 +1,7 @@
+---
+title: Many-To-Many Queries - Dokklib-DB
+description: Documentation on making many-to-many relational queries in DynamoDB with Dokklib-DB.
+---
 # Many-To-Many Queries
 
 In a many-to-many relation both entities may have multiple relations to other entities of the same type.

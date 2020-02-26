@@ -1,3 +1,7 @@
+---
+title: Delete Item - Dokklib-DB
+description: Documentation on deleting an item from DynamoDB with Dokklib-DB.
+---
 # Delete an Item
 
 Deleting an item requires knowing its composite primary key (`PK` and `SK`).

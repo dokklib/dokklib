@@ -1,6 +1,10 @@
+---
+title: Further Resources - Dokklib-DB
+description: Helpful resources for the DynamoDB single table pattern.
+---
 # DynamoDB Single Table Pattern Resources
 
-I found the resources below helpful when learning about the DynamoDB single table pattern. Please open a PR on [Github](https://github.com/dokklib/dokklib) if you have something good to add to this list!
+I found the resources below helpful when learning about the DynamoDB single table pattern. Please [edit](https://github.com/dokklib/dokklib/edit/master/docs/libs/db/resources.md) this document on Github if you have something good to add to this list!
 
 ## AWS docs
 

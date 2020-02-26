@@ -1,5 +1,6 @@
 ---
 hero: Your Guide To The Serverless Stack
+description: Dokklib is a collection of libraries and obsessively detailed guides to building web applications with the serverless stack. 
 ---
 
 # Welcome to Dokklib
