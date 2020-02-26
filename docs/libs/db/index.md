@@ -19,6 +19,8 @@ Install Dokklib-DB:
 
 `pip install dokklib-db`
 
+Dokklib-DB support Python 3.6 and later.
+
 ## Import
 
 Import Dokklib-DB:
