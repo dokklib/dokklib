@@ -17,9 +17,14 @@ Dokklib-DB is a Python library for the [DynamoDB](/guides/aws/dynamodb/) single 
 
 Install Dokklib-DB:
 
-`pip install dokklib-db`
+`pip install "boto3>=1.10.34,<2" dokklib-db`
 
 Requires Python 3.6 or later.
+
+!!! note
+    Boto3 is not specified as an installation requirement for Dokklib-DB, so you have to install it separately (like in the example command above).
+    The reason for this is to make Dokklib-DB easier to use in AWS Lambda where Boto3 is part of the default environment.
+    The earliest supported Boto3 version is `1.10.34` which is the same version as the Boto3 package in the Python 3 AWS Lambda environments.
 
 ## Import
 
