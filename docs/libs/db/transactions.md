@@ -2,11 +2,10 @@
 
 ## Isolation Levels
 
-It's very important to understand isolation levels before starting to work with transactions.
 Isolation levels determine how concurrently running transactions interact with other transactions or operations.
-DynamoDB provides serializable isolation between multiple transactions, and between transactions and operations that involve only one item, but there is only a read-committed guarantee for operations involving multiple items (eg. query or batch operations and point-in-time recovery).
+DynamoDB provides serializable isolation between multiple transactions, and between transactions and operations that involve only one item, but there is only a read-committed guarantee for operations involving multiple items (eg. query or batch operations).
 
-Serializable isolation means that no two concurrent operations on the same items can succeed, thus ensuring a consistent view of the data at all times. The downside of this is that if transactions or a transaction and other operations try to write the same item concurrently, only one of them can succeed.
+Serializable isolation means that concurrent operations on the same items can not succeed at the same time, thus ensuring a consistent state of the data at all times. The downside of this is that if multiple transactions, or a transaction and other operations try to write the same item concurrently, only one of them can succeed.
 
 Read-committed isolation means that only the results of successful transactions can be read, but there is no guarantee when reading multiple items that a consistent snapshot of the data will be returned.
  For example, if a transaction updates item A and B, and you read those items in a query at the same time, you might see the updates from the transaction for item A, but not for item B.
@@ -39,7 +38,7 @@ PK             | SK
 GROUP#my-group        | GROUPOWNER#alice
 
 Now if we want to change the owner of a group, we have to use a transaction, because we can't update the sort key of an item. 
-Instead, we have to insert a new item and delete the old item at the same time using a transaction.
+Instead, we have to insert a new item and delete the old item atomically using a transaction.
 Here is the example code to do that:
 
 
