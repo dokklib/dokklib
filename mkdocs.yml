@@ -5,9 +5,6 @@ site_url: https://dokklib.com
 
 copyright: 'Copyright &copy; 2020 Agost Biro'
 
-repo_name: dokklib/dokklib
-repo_url: https://github.com/dokklib/dokklib
-
 theme:
   name: material
   custom_dir: 'theme'
