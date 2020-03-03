@@ -1,6 +1,6 @@
 ---
-title: Documentation - Dokklib-DB
-description: Dokklib-DB is a Python library for the DynamoDB single table pattern.
+title: DynamoDB Single Table Python Library - Dokklib-DB
+description: Dokklib-DB is a Python library for the DynamoDB single table pattern. It offers a Pythonic query interface on top of Boto3, simple error handling and type safety for primary keys.
 ---
 # Dokklib-DB
 
