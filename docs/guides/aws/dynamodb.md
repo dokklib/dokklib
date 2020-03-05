@@ -34,7 +34,7 @@ The key to the single table pattern is being able to anticipate query patterns, 
 
 ## Single Table Library
 
-The implementation of the single table pattern can be tricky to get right with the AWS SDKs, but fortunately the [Dokklib-DB](/libs/db/) Python library has your back.
+The implementation of the single table pattern can be tricky to get right with the AWS SDKs, but fortunately the [Dokklib-DB](/libs/db/) Python library got you covered.
 
 ## Don't Use DynamoDB
 
@@ -43,9 +43,11 @@ The DynamoDB single table pattern is not a good fit if
 1. You need to do real-time ad-hoc queries like in online analytical processing (OLAP).
 2. You are prototyping novel technology when you can't anticipate query patterns by definition.
 
-## DynamoDB Limitations
+## Gotchas
 
-TODO (abiro)
+1. There is a hard limit of 3,000 read-capacity units or 1,000 write-capacity units per partition key. That's 24 MB/second for eventually consistent reads and 1 MB/second for non-transactional writes. These are very large numbers, but one should be aware that there is a hard limit per partition key when designing the data layout. ([source](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html))
+1. There is a 10 GB storage limit for items sharing a partition key when using local secondary indices. ([source](https://docs.amazonaws.cn/en_us/amazondynamodb/latest/developerguide/LSI.html#LSI.ItemCollections.SizeLimit))
+1. Using projection expressions to read selected attributes will not decrease the read-capacity unit (RCU) consumption of reading an item. RCU consumption is calculated based on the stored size of the item. ([source](https://stackoverflow.com/q/40229501))
 
 ## Resources
 
