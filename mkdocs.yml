@@ -24,7 +24,7 @@ markdown_extensions:
 
 nav:
   - Overview: index.md
-  - The Serverless Stack: serverles-stack.md
+  - The Serverless Stack: serverless-stack.md
   - Serverless Is Not Easy: not-easy.md
   - Adopting Serverless: adopting-serverless.md
   - Why Python: why-python.md

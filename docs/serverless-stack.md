@@ -8,11 +8,11 @@ A serverless app is a collection of managed services and some code that ties the
 2. Fully outsource the operation and security of your stack to your cloud provider.
 3. Only pay for the resources that you use.
 
-Serverless is often equated with function-as-a-service (eg. AWS Lambda), but this characterization misses the broader point about using managed services whenever possible. The functions are just the glue that provides missing integrations or features. Think of functions as a way to customize managed services, not as a way of building web services.
+Serverless is often equated with function-as-a-service (eg. AWS Lambda), but this characterization misses the broader point about using managed services whenever possible. The functions are just the glue that provides missing integrations or features. Think of functions as a way of customizing managed services, not as a way of building web services.
 
 ## Serverless Ops
 
-Outsourcing operations is the most under-appreciated aspect of the serverless stack, as we are used to constantly anticipating the failure modes of traditional services.
+Outsourcing operations is the most under-appreciated aspect of the serverless stack, as we are used to constantly anticipating failure modes of traditional cloud architectures.
 
 ![Probability of failure after last change for serverless and traditional architecture.](img/p-failure-after-last-change.png)
 
@@ -22,15 +22,22 @@ So by outsourcing the operation of your stack, not only does your operations wor
 
 ## What Is Not Serverless
 
-This brings us to the question of how to differentiate between cloud services that are truly serverless or just branded serverless. Broadly speaking, a service is not serverless if handling resource exhaustion failures beyond hitting account limits are the user's responsibility. Warning signs are if the service has time-based instead of utilization-based billing, or if you need to do capacity planning, or come up with a scaling strategy before provisioning a service. (Capacity planning in serverless is cost optimization.) Another telltale sign is if the service exposes detailed system metrics like CPU load and RAM/disk space consumption. Truly serverless products will abstract these low level metrics away and expose high level metrics like number of requests and aggregate data throughput, or use a single system metric like memory as a proxy for all other metrics.
+This brings us to the question of how to differentiate between cloud services that are truly serverless or just branded serverless. Broadly speaking, a service is not serverless if handling resource exhaustion type failures beyond hitting account limits is the user's responsibility. Here are some warning signs: 
 
-This means that most managed relational database services are not good choices for a serverless stack, because they are either vastly overprovisioned, or require careful capacity planning, which in turn prompts 24/7 monitoring to ensure high-availability, thus negating the core value propositions of the serverless stack.
+- The service has time-based instead of utilization-based billing.
+- You need to do capacity planning, or come up with a scaling strategy before provisioning the service. (Capacity planning in serverless is cost optimization.) 
+- The service exposes detailed system metrics like CPU load and RAM/disk space consumption. Truly serverless products abstract these low level metrics away and expose high level metrics like number of requests and aggregate data throughput, or use a single system metric like memory as a proxy for all other metrics.
+
+For example, most managed relational database services are not good choices for a serverless stack, because they either need to be vastly overprovisioned to avoid operational concerns, or require careful capacity planning, which in turn prompts 24/7 monitoring to ensure high-availability, thus negating the core value propositions of the serverless stack. 
+
+!!! note
+    On AWS, the best database choice for most serverless applications is DynamoDB. Read [here](/guides/aws/dynamodb/) why.
 
 ## Lock-In
 
 Vendor lock-in is a common problem for consumers of cloud services and this issue is only accentuated by the serverless stack. Since there is no way to avoid lock-in, my advice is to
 
-1. Pick your serverless providers with care. (Read my reviews [here](providers/index.md).)
+1. Pick your serverless providers with care. (Read my reviews [here.](/providers/))
 2. Once you pick a provider, embrace the lock-in, and don't slow yourself down with half-measures that give you an illusion of portability. 
 
 ## When to Use Serverless?
