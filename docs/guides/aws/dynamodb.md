@@ -48,6 +48,7 @@ The DynamoDB single table pattern is not a good fit if
 1. There is a hard limit of 3,000 read-capacity units or 1,000 write-capacity units per partition key. That's 24 MB/second for eventually consistent reads and 1 MB/second for non-transactional writes. These are very large numbers, but one should be aware that there is a hard limit per partition key when designing the data layout. ([source](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html))
 1. There is a 10 GB storage limit for items sharing a partition key when using local secondary indices. ([source](https://docs.amazonaws.cn/en_us/amazondynamodb/latest/developerguide/LSI.html#LSI.ItemCollections.SizeLimit))
 1. Using projection expressions to read selected attributes will not decrease the read-capacity unit (RCU) consumption of reading an item. RCU consumption is calculated based on the stored size of the item. ([source](https://stackoverflow.com/q/40229501))
+1. Time to Live (TTL) is not exact. It can take days until expired items are deleted from the table, so if application logic depends on the TTL, expired items must be detected in code or filtered out from queries via filter expressions. ([source](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/howitworks-ttl.html))
 
 ## Resources
 
