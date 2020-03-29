@@ -1,7 +1,7 @@
 ---
 title: AWS Review - Dokklib
 ---
-# Amazon Web Services
+# AWS Review
 
 ## Serverless Pioneers
 

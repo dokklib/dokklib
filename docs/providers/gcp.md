@@ -1,7 +1,7 @@
 ---
 title: GCP Review - Dokklib
 ---
-# Google Cloud Platform
+# GCP Review
 
 ## Containing Containers
 

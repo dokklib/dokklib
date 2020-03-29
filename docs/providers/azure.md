@@ -1,7 +1,7 @@
 ---
 title: Azure Review - Dokklib
 ---
-# Microsoft Azure
+# Azure Review
 
 ## Playing Catch Up
 
